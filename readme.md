@@ -1,5 +1,5 @@
-## Analiza wyników wyborów prezydenckich 2025 w Polsce
-# Czy doszło, na masową skalę, do pomyłek w postaci zamiany wyników kandydatów w drugiej turze?
+# Analiza wyników wyborów prezydenckich 2025 w Polsce
+## Czy doszło, na masową skalę, do pomyłek w postaci zamiany wyników kandydatów w drugiej turze?
 - Do analizy wykorzystano wyniki 1. i 2. tury wyborów pobrane ze strony PKW.
 - Dane zostały zaimportowane do bazy danych .sqlite, nazwy kolumn zmieniono dla lepszej czytelności.
 - W pierwszym kroku wyliczono teoretyczne wyniki drugiej tury, bazujące na przepływach elektoratów z badania exit poll IPSOS z 1 czerwca 2025, z uwzględnieniem nowych wyborców.
