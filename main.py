@@ -94,9 +94,6 @@ df2 = df2.rename(columns={
     "NAWROCKI Karol Tadeusz": "nawrocki_2",
     "TRZASKOWSKI Rafał Kazimierz": "trzaskowski_2"
 })
-print(df1.info())
-print(df2.info())
-
 
 # creating sqlite3 database in memory
 conn = sqlite3.connect(":memory:")
