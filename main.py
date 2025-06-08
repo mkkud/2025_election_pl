@@ -2,7 +2,9 @@ import pandas as pd
 import sqlite3
 import matplotlib.pyplot as plt
 import os
-import openpyxl
+import seaborn as sns
+import matplotlib.pyplot as plt
+
 
 # === Read CSVs ===
 df1 = pd.read_csv("input/protokoly_po_obwodach_utf8.csv", sep=";")
@@ -109,14 +111,42 @@ conn.commit()
 
 with open(("sql\komisje_wyniki.sql"), "r", encoding="utf-8") as f:
     komisje_wyniki_sql = f.read()
-df_result = pd.read_sql_query(komisje_wyniki_sql, conn)
+conn.executescript(komisje_wyniki_sql)
+conn.commit()
 
-df_result_excel = pd.DataFrame(df_result, columns=[
-    "Komisja", "Nawrocki I", "Nawrocki II", 
-    "Trzaskowski I", "Trzaskowski II", 
-    "Przepływy Nawrocki", "Przepływy Trzaskowski",
-    "Podejrzenie", "Na korzyść"
-])
+with open(("sql\zamiana.sql"), "r", encoding="utf-8") as f:
+    zamiana = f.read()
+df_result = pd.read_sql_query(zamiana, conn)
+
+df_result = df_result.rename(columns={
+    "komisja":"Komisja", 
+    "nawrocki_1":"Nawrocki I", 
+    "nawrocki_2":"Nawrocki II", 
+    "trzaskowski_1":"Trzaskowski I", 
+    "trzaskowski_2":"Trzaskowski II", 
+    "nawrocki_przeplywy_2_n":"Przepływy Nawrocki", 
+    "trzaskowski_przeplywy_2_n":"Przepływy Trzaskowski",
+    "podejrzenie_zamiany":"Podejrzenie", 
+    "zamiana_na_korzysc":"Na korzyść"
+    }
+    )
+
+with open(("sql\zamiana_filtered.sql"), "r", encoding="utf-8") as f:
+    zamiana = f.read()
+df_result_excel = pd.read_sql_query(zamiana, conn)
+
+df_result_excel = df_result_excel.rename(columns={
+    "komisja":"Komisja", 
+    "nawrocki_1":"Nawrocki I", 
+    "nawrocki_2":"Nawrocki II", 
+    "trzaskowski_1":"Trzaskowski I", 
+    "trzaskowski_2":"Trzaskowski II", 
+    "nawrocki_przeplywy_2_n":"Przepływy Nawrocki", 
+    "trzaskowski_przeplywy_2_n":"Przepływy Trzaskowski",
+    "podejrzenie_zamiany":"Podejrzenie", 
+    "zamiana_na_korzysc":"Na korzyść"
+    }
+    )
 
 conn.close()
 

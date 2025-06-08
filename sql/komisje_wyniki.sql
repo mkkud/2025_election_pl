@@ -1,3 +1,4 @@
+create table komisje_wyniki_sim as
 select komisja, 
 			nawrocki_1, nawrocki_2, 
 			0.5*bartoszewicz+0.1*biejat+0.92*braun+0.14*holownia+0.8*jakubiak+0.5*maciak+0.88*mentzen+0.19*senyszyn+0.51*stanowski+0.8*woch+0.16*zandberg +nawrocki_1 as nawrocki_przeplywy_2,
