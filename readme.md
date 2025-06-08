@@ -1,3 +1,4 @@
+(English below)
 # Analiza wyników wyborów prezydenckich 2025 w Polsce
 ## Czy doszło, na masową skalę, do pomyłek w postaci zamiany wyników kandydatów w drugiej turze?
 - Do analizy wykorzystano wyniki 1. i 2. tury wyborów pobrane ze strony PKW.
@@ -7,10 +8,29 @@
 - Odrzucono komisje, w których zaden z kandydatów w drugiej turze nie otrzymał więcej niz 30 głosów
 
 ## Wnioski
+- w 22 komisjach odnotowano potencjalną zamianę głosów w drugiej turze
+- 12 potencjalnych zamian przyniosło korzyść Karolowi Nawrockiemu, 10 Rafałowi Trzaskowskiemu
 - Liczba komisji i fakt występowania róznic na korzyść obu kandydatów, wykluczają mozliwy wplyw owych nieprawidłowości na wyniki głosowania w skali kraju.
 - Mimo to, fakt zaistnienia takich błędów wskazuje na zwrócenie uwagi na podobne incydenty, np. przy okazji wyborów samorządowych, gdzie mogą mieć one wpływ na wyniki głosowania.
+- Wyniki zaprezentowano poniżej
 
-| **Komisja**                                                                                                                            | **Nawrocki I tura** | **Nawrocki II tura** | **Trzaskowski I tura** | **Trzaskowski II tura** | **"Przepływy" Nawrocki IPSOS** | **"Przepływy" Trzaskowski IPSOS** | **Podejrzenie zamiany w II turze** | **Zamiana na korzyść** |
+
+English
+# Analysis of the results of the 2025 presidential election in Poland
+## Has there been, on a massive scale, confusion in the form of swapping the results of candidates in the second round?
+- The results of the 1st and 2nd rounds of elections downloaded from the PKW website were used for the analysis.
+- The data was imported into a .sqlite database, the column names were changed for better readability.
+- In the first step, the theoretical results of the second round were calculated, based on electorate flows from the June 1, 2025 IPSOS exit poll, taking into account new voters.
+- Then, the results so obtained were compared with the results of the 2nd round registered with the PKW; commissions in which the theoretical results of a given candidate are closer to those of the opponent than those of that candidate, while differing from each other by more than 25%, were marked as possible substitution of results.
+- Committees in which no candidate in the second round received more than 30 votes were rejected
+
+## Conclusions
+- 22 commissions reported potential vote swapping in the second round
+- 12 potential substitutions benefited Karol Nawrocki, 10 benefited Rafal Trzaskowski
+- The number of commissions and the fact that there were differences in favor of both candidates, exclude the possible influence of these irregularities on the results of the vote nationwide.
+- The results have been printed below
+
+|**Komisja**                                                                                                                            | **Nawrocki I tura** | **Nawrocki II tura** | **Trzaskowski I tura** | **Trzaskowski II tura** | **"Przepływy" Nawrocki IPSOS** | **"Przepływy" Trzaskowski IPSOS** | **Podejrzenie zamiany w II turze** | **Zamiana na korzyść** |
 | -------------------------------------------------------------------------------------------------------------------------------------- | -------------- | --------------- | ----------------- | ------------------ | ---------------------- | ------------------------- | --------------- | -------------- |
 | 4_gm. Brześć Kujawski_Szkoła Podstawowa, Wieniec ul. Szkolna 1, 87-880 Brześć Kujawski                                                 | 137            | 466             | 274               | 331                | 345,34                 | 457,66                    | TAK             | Nawrocki       |
 | 25_m. Grudziądz_Zespół Placówek Młodzieżowych "Bursa", ul. gen. Józefa Hallera 37, 86-300 Grudziądz                                    | 173            | 504             | 343               | 324                | 343,01                 | 484,99                    | TAK             | Nawrocki       |
