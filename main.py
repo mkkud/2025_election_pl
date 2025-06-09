@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 
 
 # reading csvs
-df1 = pd.read_csv("input/protokoly_po_obwodach_utf8.csv", sep=";")
-df2 = pd.read_csv("input/protokoly_po_obwodach_w_drugiej_turze_utf8.csv", sep=";")
+df1 = pd.read_csv(os.path.join("input","protokoly_po_obwodach_utf8.csv"), sep=";")
+df2 = pd.read_csv(os.path.join("input","protokoly_po_obwodach_w_drugiej_turze_utf8.csv"), sep=";")
 
 # renaming columns for practical reasons
 df1 = df1.rename(columns={
@@ -102,21 +102,22 @@ df1.to_sql("protokoly_1", conn, index=False, if_exists="replace")
 df2.to_sql("protokoly_2", conn, index=False, if_exists="replace")
 
 # executing sql queries
-with open("sql\protokoly_1_2.sql", "r", encoding="utf-8") as f:
+
+with open(os.path.join("sql","protokoly_1_2.sql"), "r", encoding="utf-8") as f:
     protokoly_1_2 = f.read()
 conn.executescript(protokoly_1_2)
 conn.commit()
 
-with open(("sql\komisje_wyniki.sql"), "r", encoding="utf-8") as f:
+with open(os.path.join("sql","komisje_wyniki.sql"), "r", encoding="utf-8") as f:
     komisje_wyniki_sql = f.read()
 conn.executescript(komisje_wyniki_sql)
 conn.commit()
 
-with open(("sql\zamiana.sql"), "r", encoding="utf-8") as f:
+with open(os.path.join("sql","zamiana.sql"), "r", encoding="utf-8") as f:
     zamiana = f.read()
 df_result = pd.read_sql_query(zamiana, conn)
 
-with open(("sql\zamiana_filtered.sql"), "r", encoding="utf-8") as f:
+with open(os.path.join("sql","zamiana_filtered.sql"), "r", encoding="utf-8") as f:
     zamiana = f.read()
 df_result_excel = pd.read_sql_query(zamiana, conn)
 
