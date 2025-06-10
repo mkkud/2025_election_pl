@@ -3,8 +3,6 @@ import sqlite3
 import matplotlib.pyplot as plt
 import os
 import seaborn as sns
-import matplotlib.pyplot as plt
-
 
 # reading csvs
 df1 = pd.read_csv(os.path.join("input","protokoly_po_obwodach_utf8.csv"), sep=";")
@@ -149,6 +147,8 @@ df_result_excel = df_result_excel.rename(columns={
 
 conn.close()
 
-#saving filtered results to excel
+#saving results to excel
 df_result_excel.to_excel(os.path.join("result","results.xlsx"), index=False)
+print("Excel file saved as results.xlsx")
+df_result.to_excel(os.path.join("result","results_all.xlsx"), index=False)
 print("Excel file saved as results.xlsx")
