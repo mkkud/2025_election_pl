@@ -119,19 +119,8 @@ with open(os.path.join("sql","zamiana_filtered.sql"), "r", encoding="utf-8") as 
     zamiana = f.read()
 df_result_excel = pd.read_sql_query(zamiana, conn)
 
-# renaming columns in results tables for display purposes
-df_result = df_result.rename(columns={
-    "komisja":"Komisja", 
-    "nawrocki_1":"Nawrocki I", 
-    "nawrocki_2":"Nawrocki II", 
-    "trzaskowski_1":"Trzaskowski I", 
-    "trzaskowski_2":"Trzaskowski II", 
-    "nawrocki_przeplywy_2_n":"Przepływy Nawrocki", 
-    "trzaskowski_przeplywy_2_n":"Przepływy Trzaskowski",
-    "podejrzenie_zamiany":"Podejrzenie", 
-    "zamiana_na_korzysc":"Na korzyść"
-    }
-    )
+# renaming columns in results table for display purposes
+
 df_result_excel = df_result_excel.rename(columns={
     "komisja":"Komisja", 
     "nawrocki_1":"Nawrocki I", 
@@ -147,7 +136,7 @@ df_result_excel = df_result_excel.rename(columns={
 
 conn.close()
 
-#saving results to excel
+# saving results to excel
 df_result_excel.to_excel(os.path.join("result","results.xlsx"), index=False)
 print("Excel file saved as results.xlsx")
 df_result.to_excel(os.path.join("result","results_all.xlsx"), index=False)
