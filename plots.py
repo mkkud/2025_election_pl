@@ -8,7 +8,7 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 import os
 
-def get_outliers(df, x_col, y_col, threshold=8):
+def get_outliers(df, x_col, y_col, threshold=7):
     """
     Identify outliers in the dataset based on a linear regression model.
     Outliers are defined as points where the residuals exceed a specified threshold
