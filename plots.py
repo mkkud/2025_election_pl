@@ -120,7 +120,63 @@ def plot_outliers():
     print("Plot with outliers saved as result/votes_vs_przeplywy_outliers.png\n")
 
 
+def plot_votes_2nd():
+    """
+    Generate plots to visualize outliers in the voting data for Nawrocki and Trzaskowski.
+    It uses linear regression to identify outliers based on the relationship between votes in the second round
+    and the przepływy votes.
+    """
+    print("Generating plots for outliers in voting data...")
+
+    naw_outliers, naw_residuals = get_outliers(df_result, "nawrocki_2", "nawrocki_przeplywy_2_n")
+    df_result["nawrocki_outlier"] = naw_outliers
+    
+    trz_outliers, trz_residuals = get_outliers(df_result, "trzaskowski_2", "trzaskowski_przeplywy_2_n")
+    df_result["trzaskowski_outlier"] = trz_outliers
+
+    both_outliers = df_result["nawrocki_outlier"] & df_result["trzaskowski_outlier"]
+
+    print("Results where both Nawrocki and Trzaskowski are outliers:")
+    print(df_result[both_outliers][["komisja",
+        "nawrocki_2", "nawrocki_przeplywy_2_n", 
+        "trzaskowski_2", "trzaskowski_przeplywy_2_n"
+    ]])
+
+    plt.figure(figsize=(12, 5))
+
+    # Nawrocki 
+    plt.subplot(1, 2, 1)
+    sns.regplot(
+        data=df_result,
+        x="nawrocki_1",
+        y="nawrocki_2",
+        color="blue",
+        line_kws={"color": "black", "lw": 1}
+    )
+    plt.title("Nawrocki: Round I Votes vs Round II")
+    plt.xlabel("Votes in Round I")
+    plt.ylabel("otes in Round II")
+
+    # Trzaskowski
+    plt.subplot(1, 2, 2)
+    sns.regplot(
+        data=df_result,
+        x="trzaskowski_1",
+        y="trzaskowski_2",
+        color="red",
+        line_kws={"color": "black", "lw": 1}
+    )
+    plt.title("Trzaskowski: Round I Votes vs Round II")
+    plt.xlabel("Votes in Round I")
+    plt.ylabel("otes in Round II")
+
+    plt.tight_layout()
+    plt.savefig("result/votes_1nd_vs_2nd.png")
+    plt.close()
+
+    print("Plot with outliers saved as result/votes_1nd_vs_2nd.png\n")
+
 if __name__ == "__main__":
     plot_outliers()
+    plot_votes_2nd()
     print("Plots generated successfully.")
-
